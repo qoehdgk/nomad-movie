@@ -18,13 +18,18 @@ const MainNavigation = createStackNavigator(
     Detail: {
       screen: DetailScreen,
       navigationOptions: {
-        headerTitle: "Hello",
+        headerTintColor: "white",
+        headPressColorAndroid: "#ffffff",
+        gesturesEnabled: true,
+        gestureDirection: "up-to-down",
         ...headerStyles
       }
     }
   },
   {
-    headerMode: "screen"
+    headerMode: "screen",
+    headerLayoutPreset: "center",
+    headerBackTitleVisible: false
   }
 );
 
