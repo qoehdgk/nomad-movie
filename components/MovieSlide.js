@@ -45,7 +45,7 @@ const Overview = styled.Text`
 `;
 
 const VoteContainer = styled.View`
-  margin: 10px 0px;
+  margin-top: 10px;
 `;
 
 const BtnContainer = styled.TouchableOpacity`
@@ -64,7 +64,7 @@ const MovieSlide = ({
   backgroundPhoto,
   title,
   voteAvg,
-  overView
+  overview
 }) => (
   <Container>
     <BgImage source={{ uri: makePhotoUrl(backgroundPhoto) }} />
@@ -77,11 +77,14 @@ const MovieSlide = ({
             <MovieRating votes={voteAvg} inSlide={true} />
           </VoteContainer>
         ) : null}
-        <Overview>
-          {overView.length > 117
-            ? `${overView.substring(0, 120)}...`
-            : overView}
-        </Overview>
+        {overview ? (
+          <Overview>
+            {overview.length > 117
+              ? `${overview.substring(0, 120)}...`
+              : overview}
+          </Overview>
+        ) : null}
+
         <BtnContainer>
           <BtnText>More details</BtnText>
         </BtnContainer>
@@ -96,7 +99,7 @@ MovieSlide.propTypes = {
   backgroundPhoto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   voteAvg: PropTypes.number.isRequired,
-  overView: PropTypes.string.isRequired
+  overview: PropTypes.string.isRequired
 };
 
 export default MovieSlide;

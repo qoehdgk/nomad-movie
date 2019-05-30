@@ -11,8 +11,6 @@ const View = styled.View`
   height: ${SWIPER_HEIGHT};
 `;
 
-const Text = styled.Text``;
-
 const MovieSlider = ({ movies }) =>
   movies ? (
     <Swiper
@@ -26,7 +24,7 @@ const MovieSlider = ({ movies }) =>
         .map(movie => (
           <View key={movie.id}>
             <MovieSlide
-              overView={movie.overview}
+              overview={movie.overview}
               voteAvg={movie.vote_average}
               title={movie.title}
               id={movie.id}

@@ -7,6 +7,7 @@ const Vote = styled.Text`
   color: ${props => (props.inSlide ? TINT_COLOR : GREY_COLOR)};
   font-size: ${props => (props.inSlide ? "10px" : "8px")};
   font-weight: 600;
+  margin-bottom: 10px;
 `;
 
 const MovieRating = ({ votes, inSlide = false }) => (
