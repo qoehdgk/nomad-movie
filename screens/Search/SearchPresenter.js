@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { BG_COLOR, GREY_COLOR } from "../../constants/Colors";
+import { BG_COLOR, GREY_COLOR, TINT_COLOR } from "../../constants/Colors";
 import Layout from "../../constants/Layout";
 import Loader from "../../components/Loader";
 import Section from "../../components/Section";
 import MovieItem from "../../components/MovieItem";
+import NonePresenter from "../../components/NonePresenter";
 
 const Container = styled.View`
   flex: 1;
@@ -35,7 +36,8 @@ const SearchPresenter = ({
   searchTerm,
   movieResults,
   handleSearchUpdate,
-  onSubmitEditing
+  onSubmitEditing,
+  displayNone
 }) => (
   <Container>
     <InputContainer>
@@ -48,6 +50,7 @@ const SearchPresenter = ({
         onSubmitEditing={onSubmitEditing}
       />
     </InputContainer>
+
     <SearchResults>
       {loading ? (
         <Loader />
@@ -69,8 +72,13 @@ const SearchPresenter = ({
                     />
                   ))}
               </Section>
-            ) : null
+            ) : tvResults.length > 0 ? (
+              (displayNone = false)
+            ) : (
+              (displayNone = true)
+            )
           ) : null}
+
           {tvResults ? (
             tvResults.length > 0 ? (
               <Section title="TV Results">
@@ -87,10 +95,15 @@ const SearchPresenter = ({
                     />
                   ))}
               </Section>
-            ) : null
+            ) : movieResults.length > 0 ? (
+              (displayNone = false)
+            ) : (
+              (displayNone = true)
+            )
           ) : null}
         </>
       )}
+      <NonePresenter display={displayNone} />
     </SearchResults>
   </Container>
 );
